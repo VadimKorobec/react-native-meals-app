@@ -1,19 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
+import CategoriesScreen from "./screens/CategoriesScreen";
 
 const App = () => {
-  return (
-    <View style={styles.rootContainer}>
-      <Text>Hello World!</Text>
-    </View>
-  );
+  return <CategoriesScreen />;
 };
 
 export default App;
 
-const styles = StyleSheet.create({
-  rootContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});
