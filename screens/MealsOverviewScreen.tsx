@@ -12,7 +12,7 @@ const MealsOverviewScreen = ({ route }: any) => {
     <View style={styles.container}>
       <FlatList
         data={meals}
-              renderItem={({ item }) => <MealItem item={item} />}
+        renderItem={({ item }) => <MealItem item={item} />}
         keyExtractor={(item) => item.id}
       />
     </View>
@@ -25,7 +25,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });
