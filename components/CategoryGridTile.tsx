@@ -1,16 +1,23 @@
-import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 interface CategoryGridTileProps {
   id: string;
   title: string;
-  color: string;
+
   onPress: (id: string) => void;
 }
 
 const CategoryGridTile = ({
   id,
   title,
-  color,
+
   onPress,
 }: CategoryGridTileProps) => {
   return (
@@ -23,7 +30,11 @@ const CategoryGridTile = ({
         ]}
         onPress={() => onPress(id)}
       >
-        <View style={[styles.innerContainer, { backgroundColor: color }]}>
+        <View style={[styles.innerContainer]}>
+          <Image
+            style={styles.images}
+            source={require("../assets/images/foodiesfeed.com_healthy-food.jpg")}
+          />
           <Text style={styles.title}>{title}</Text>
         </View>
       </Pressable>
@@ -55,12 +66,28 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 1,
-    padding: 16,
+    borderRadius: 8,
+    overflow: "hidden",
     alignItems: "center",
     justifyContent: "center",
+    position: "relative",
+  },
+  images: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
+    position: "absolute",
   },
   title: {
+    position: "absolute",
+    bottom: 10,
+    alignSelf: "center",
     fontWeight: "bold",
     fontSize: 18,
+    color: "white",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 4,
   },
 });
