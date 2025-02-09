@@ -1,12 +1,29 @@
 import { useEffect } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
+import { RootStackParamList } from "../types/stack.type";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RouteProp } from "@react-navigation/native";
 
 import MealItem from "../components/MealItem";
 
 import { MEALS, CATEGORIES } from "../data/dummy-data";
 
+type MealsOverviewScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "MealsOverview"
+>;
 
-const MealsOverviewScreen = ({ route, navigation }: any) => {
+type MealsOverviewScreenRouteProp = RouteProp<
+  RootStackParamList,
+  "MealsOverview"
+>;
+
+type Props = {
+  navigation: MealsOverviewScreenNavigationProp;
+  route: MealsOverviewScreenRouteProp;
+};
+
+const MealsOverviewScreen = ({ route, navigation }: Props) => {
   const catId = route.params.categoryId;
 
   const meals = MEALS.filter((item) => item.categoryIds.includes(catId));

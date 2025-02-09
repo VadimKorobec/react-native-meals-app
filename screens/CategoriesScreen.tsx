@@ -1,10 +1,21 @@
 import { FlatList, StyleSheet, View } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../types/stack.type";
 
 import CategoryGridTile from "../components/CategoryGridTile";
 
 import { CATEGORIES } from "../data/dummy-data";
 
-const CategoriesScreen = ({ navigation }: any) => {
+type CategoriesScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "MealsCategories"
+>;
+
+type Props = {
+  navigation: CategoriesScreenNavigationProp;
+};
+
+const CategoriesScreen = ({ navigation }: Props) => {
   const handlePress = (id: string) => {
     navigation.navigate("MealsOverview", {
       categoryId: id,
@@ -29,6 +40,6 @@ export default CategoriesScreen;
 
 const styles = StyleSheet.create({
   container: {
-     backgroundColor: "#E6D5B8",
+    backgroundColor: "#E6D5B8",
   },
 });

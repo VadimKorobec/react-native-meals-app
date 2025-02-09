@@ -6,8 +6,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
+import MealDetailScreen from "./screens/MealDetailScreen";
+import { RootStackParamList } from "./types/stack.type";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
@@ -34,6 +36,7 @@ const App = () => {
               title: "Meals",
             }}
           />
+          <Stack.Screen name="MealDetail" component={MealDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
