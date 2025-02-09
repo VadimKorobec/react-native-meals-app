@@ -17,9 +17,9 @@ interface CategoryGridTileProps {
 const CategoryGridTile = ({
   id,
   title,
-
   onPress,
 }: CategoryGridTileProps) => {
+  
   return (
     <View style={styles.gridItem}>
       <Pressable

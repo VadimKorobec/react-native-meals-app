@@ -1,12 +1,25 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { useEffect } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
 
-import { MEALS } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
 
-const MealsOverviewScreen = ({ route }: any) => {
+import { MEALS, CATEGORIES } from "../data/dummy-data";
+
+
+const MealsOverviewScreen = ({ route, navigation }: any) => {
   const catId = route.params.categoryId;
 
   const meals = MEALS.filter((item) => item.categoryIds.includes(catId));
+
+  useEffect(() => {
+    const category = CATEGORIES.find((item) => item.id === catId);
+
+    if (category) {
+      navigation.setOptions({
+        title: category.title,
+      });
+    }
+  }, [catId, navigation]);
 
   return (
     <View style={styles.container}>
@@ -25,5 +38,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: "#E6D5B8",
   },
 });
