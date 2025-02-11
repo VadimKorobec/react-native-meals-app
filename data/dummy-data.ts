@@ -2,7 +2,7 @@ import Category from "../models/category";
 import Meal from "../models/meal";
 
 export const CATEGORIES = [
-  new Category("c1", "Italian" ),
+  new Category("c1", "Italian"),
   new Category("c2", "Quick & Easy"),
   new Category("c3", "Hamburgers"),
   new Category("c4", "German"),
@@ -43,7 +43,8 @@ export const MEALS = [
     false,
     true,
     true,
-    true
+    true,
+    false
   ),
 
   new Meal(
@@ -69,7 +70,8 @@ export const MEALS = [
     false,
     false,
     false,
-    false
+    false,
+    false,
   ),
 
   new Meal(
@@ -98,7 +100,8 @@ export const MEALS = [
     false,
     false,
     false,
-    true
+    true,
+    false,
   ),
 
   new Meal(
@@ -131,7 +134,8 @@ export const MEALS = [
     false,
     false,
     false,
-    false
+    false,
+    false,
   ),
 
   new Meal(
@@ -163,7 +167,8 @@ export const MEALS = [
     true,
     false,
     true,
-    true
+    true,
+    false,
   ),
 
   new Meal(
@@ -196,7 +201,8 @@ export const MEALS = [
     true,
     false,
     true,
-    false
+    false,
+    false,
   ),
 
   new Meal(
@@ -225,7 +231,8 @@ export const MEALS = [
     true,
     false,
     true,
-    false
+    false,
+    false,
   ),
 
   new Meal(
@@ -256,7 +263,8 @@ export const MEALS = [
     true,
     false,
     false,
-    true
+    true,
+    false,
   ),
 
   new Meal(
@@ -303,7 +311,8 @@ export const MEALS = [
     true,
     false,
     true,
-    false
+    false,
+    false,
   ),
   new Meal(
     "m10",
@@ -332,6 +341,7 @@ export const MEALS = [
     true,
     true,
     true,
-    true
+    true,
+    false,
   ),
 ];

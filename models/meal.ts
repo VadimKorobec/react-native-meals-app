@@ -12,6 +12,7 @@ class Meal {
   isVegan: boolean;
   isVegetarian: boolean;
   isLactoseFree: boolean;
+  isFavorite: boolean;
 
   constructor(
     id: string,
@@ -26,7 +27,8 @@ class Meal {
     isGlutenFree: boolean,
     isVegan: boolean,
     isVegetarian: boolean,
-    isLactoseFree: boolean
+    isLactoseFree: boolean,
+    isFavorite:boolean,
   ) {
     this.id = id;
     this.categoryIds = categoryIds;
@@ -41,6 +43,7 @@ class Meal {
     this.isVegan = isVegan;
     this.isVegetarian = isVegetarian;
     this.isLactoseFree = isLactoseFree;
+    this.isFavorite = isFavorite
   }
 }
 

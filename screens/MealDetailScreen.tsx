@@ -1,3 +1,4 @@
+import { useLayoutEffect, useState } from "react";
 import {
   NavigationProp,
   RouteProp,
@@ -5,7 +6,6 @@ import {
   useRoute,
 } from "@react-navigation/native";
 import {
-  Button,
   Image,
   Platform,
   ScrollView,
@@ -19,7 +19,8 @@ import Subtitle from "../components/Subtitle";
 import List from "../components/List";
 
 import { MEALS } from "../data/dummy-data";
-import { useLayoutEffect } from "react";
+import IconButton from "../components/IconButton";
+import { Meal } from "../types/meal.type";
 
 type MealDetailScreenRouteProp = RouteProp<RootStackParamList, "MealDetail">;
 
@@ -29,24 +30,34 @@ type MealDetailScreenNavigationProp = NavigationProp<
 >;
 
 const MealDetailScreen = () => {
+  const [meals, setMeals] = useState<Meal[]>(MEALS);
+  const [pressedIcon, setPressedIcon] = useState<boolean>(false);
+
   const route = useRoute<MealDetailScreenRouteProp>();
   const navigation = useNavigation<MealDetailScreenNavigationProp>();
 
-  const meal = MEALS.find((item) => item.id === route.params.mealId);
+  const meal = meals.find((item) => item.id === route.params.mealId);
 
-  const handleHeaderButtonPress = () => {
-    console.log("He pressed me!:)");
+  const handleToggleIcon = () => {
+    setPressedIcon((prevState) => !prevState);
+    setMeals((prevState) =>
+      prevState.map((item) =>
+        item.id === route.params.mealId
+          ? { ...item, isFavorite: !item.isFavorite }
+          : item
+      )
+    );
   };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <View style={{marginRight:10}}>
-          <Button title="Tap me!" onPress={handleHeaderButtonPress} />
+        <View style={{ marginRight: 10 }}>
+          <IconButton onPress={handleToggleIcon} pressed={pressedIcon} />
         </View>
       ),
     });
-  }, [navigation, handleHeaderButtonPress]);
+  }, [navigation, handleToggleIcon]);
 
   if (!meal) {
     return <Text>Sorry, meal not found.</Text>;
@@ -78,6 +89,7 @@ const MealDetailScreen = () => {
             <Text key={step}>{step}</Text>
           ))}
         </List>
+        {meal.isFavorite ? <Text>True</Text> : <Text>False</Text>}
       </View>
     </ScrollView>
   );

@@ -12,4 +12,5 @@ export type Meal = {
   isVegan: boolean;
   isVegetarian: boolean;
   isLactoseFree: boolean;
+  isFavorite:boolean,
 };
