@@ -8,8 +8,31 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 import MealDetailScreen from "./screens/MealDetailScreen";
 import { RootStackParamList } from "./types/stack.type";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import FavoritesScreen from "./screens/FavoritesScreen";
 
 const Stack = createStackNavigator<RootStackParamList>();
+const Drawer = createDrawerNavigator<RootStackParamList>();
+
+const DrawerNavigation = () => {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: "#b89a7d" },
+        headerTintColor: "white",
+      }}
+    >
+      <Drawer.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          title: "All Categories",
+        }}
+      />
+      <Drawer.Screen name="Favorites" component={FavoritesScreen} />
+    </Drawer.Navigator>
+  );
+};
 
 const App = () => {
   return (
@@ -24,9 +47,9 @@ const App = () => {
         >
           <Stack.Screen
             name="MealsCategories"
-            component={CategoriesScreen}
+            component={DrawerNavigation}
             options={{
-              title: "All Categories",
+              headerShown: false,
             }}
           />
           <Stack.Screen
@@ -36,7 +59,9 @@ const App = () => {
               title: "Meals",
             }}
           />
-          <Stack.Screen name="MealDetail" component={MealDetailScreen} />
+          <Stack.Screen name="MealDetail" component={MealDetailScreen} options={{
+            title:'About the Meal'
+          }} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
